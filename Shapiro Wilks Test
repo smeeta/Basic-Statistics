@@ -1,0 +1,16 @@
+
+##------------------------------------------------------------
+## Shapiro Wilk Normality Test 
+##------------------------------------------------------------
+# Example dataframe
+p <- read.csv("plipid_2grp_github.csv",head=T); head(p)
+p2 <- plasma[,-1]
+# Perform Shapiro-Wilk test for each variable
+shapiro_results <- apply(p2, 2, function(x) shapiro.test(x)$p.value) 
+# Print results
+shapiro_results 
+# export output to text file 
+sink(file = "p-shapiro-Wilks.txt")
+print(shapiro_results)
+sink(file = NULL)
+##------------------------------------------------------------
